@@ -28,3 +28,15 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+UnityProject/\.idea/\.idea\.UnityProject/\.idea/
+
+UnityProject/\.idea/\.idea\.UnityProject/
+
+UnityProject/Assets/Plugins/Editor/JetBrains/
+
+UnityProject/Logs/
+
+UnityProject/Packages/manifest\.json
+
+UnityProject/Assets/Plugins/Editor/JetBrains\.meta
