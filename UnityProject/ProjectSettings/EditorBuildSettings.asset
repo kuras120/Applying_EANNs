@@ -7,20 +7,23 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Main.unity
-    guid: 00000000000000000000000000000000
+    guid: 00722b79459f4054aa7d70ce677b50d8
   - enabled: 1
     path: Assets/Scenes/GUI.unity
-    guid: 00000000000000000000000000000000
+    guid: 6d0250c2081c7f44da4c42fcc30e8d90
   - enabled: 1
     path: Assets/Scenes/Tracks/Track1.unity
-    guid: 00000000000000000000000000000000
+    guid: f7face657a3d976448e35d23fe148c0e
   - enabled: 1
     path: Assets/Scenes/Tracks/Track2.unity
-    guid: 00000000000000000000000000000000
+    guid: 3806cedf0bed389438e07f31ed498921
   - enabled: 1
     path: Assets/Scenes/Tracks/Track3.unity
-    guid: 00000000000000000000000000000000
+    guid: 38254078d11a513459eae66bcb662f15
   - enabled: 1
     path: Assets/Scenes/Tracks/Track4.unity
-    guid: 00000000000000000000000000000000
+    guid: 80890b272b44f994ca8136905e1ff52f
+  - enabled: 1
+    path: Assets/Scenes/Tracks/Track5.unity
+    guid: fec8b0b2ca6f5beee95655cdab2017c9
   m_configObjects: {}

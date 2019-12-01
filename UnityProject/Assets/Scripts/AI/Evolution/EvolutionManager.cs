@@ -214,18 +214,21 @@ public class EvolutionManager : MonoBehaviour
             agents.Add(new Agent(genotype, MathHelper.SoftSignFunction, FNNTopology));
 
         TrackManager.Instance.SetCarAmount(agents.Count);
-        IEnumerator<CarController> carsEnum = TrackManager.Instance.GetCarEnumerator();
-        for (int i = 0; i < agents.Count; i++)
+        for (uint iter = 0; iter < TrackManager.Instance.CarCollections.Length; iter++)
         {
-            if (!carsEnum.MoveNext())
+            IEnumerator<CarController> carsEnum = TrackManager.Instance.GetCarEnumerator(iter);
+            for (int i = 0; i < agents.Count; i++)
             {
-                Debug.LogError("Cars enum ended before agents.");
-                break;
-            }
+                if (!carsEnum.MoveNext())
+                {
+                    Debug.LogError("Cars enum ended before agents.");
+                    break;
+                }
 
-            carsEnum.Current.Agent = agents[i];
-            AgentsAliveCount++;
-            agents[i].AgentDied += OnAgentDied;
+                carsEnum.Current.Agent = agents[i];
+                AgentsAliveCount++;
+                agents[i].AgentDied += OnAgentDied;
+            }   
         }
 
         TrackManager.Instance.Restart();

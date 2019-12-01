@@ -2,6 +2,8 @@
 /// Date: March 2017
 
 #region Includes
+
+using System;
 using UnityEngine;
 #endregion
 
@@ -58,8 +60,7 @@ public class CameraMovement : MonoBehaviour
 	void FixedUpdate ()
     {
         //Check movement direction
-        if (AllowUserInput)
-            CheckUserInput();
+        if (AllowUserInput) CheckUserInput();
         else if (Target != null)
             targetCamPos = Target.transform.position;
 
@@ -108,17 +109,14 @@ public class CameraMovement : MonoBehaviour
     public void SetCamPosInstant(Vector3 camPos)
     {
         camPos.z = CamZ;
-        this.transform.position = camPos;
-        targetCamPos = this.transform.position;
+        transform.position = camPos;
+        targetCamPos = transform.position;
     }
 
     private void CheckUserInput()
     {
-        float horizontalInput, verticalInput;
-
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-
+        var horizontalInput = Input.GetAxis("Horizontal");
+        var verticalInput = Input.GetAxis("Vertical");
         targetCamPos += new Vector3(horizontalInput * UserInputSpeed * Time.deltaTime, verticalInput * UserInputSpeed * Time.deltaTime);
     }
     #endregion

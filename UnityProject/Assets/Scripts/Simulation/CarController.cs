@@ -128,6 +128,7 @@ public class CarController : MonoBehaviour
                 sensorOutput[i] = sensors[i].Output;
 
             double[] controlInputs = Agent.FNN.ProcessInputs(sensorOutput);
+
             Movement.SetInputs(controlInputs);
         }
 
