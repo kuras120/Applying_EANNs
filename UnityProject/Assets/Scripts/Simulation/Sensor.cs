@@ -2,6 +2,8 @@
 /// Date: March 2017
 
 #region Includes
+
+using System.Collections.Generic;
 using UnityEngine;
 #endregion
 
@@ -13,7 +15,7 @@ public class Sensor : MonoBehaviour
     #region Members
     // The layer this sensor will be reacting to, to be set in Unity editor.
     [SerializeField]
-    private LayerMask LayerToSense;
+    private List<LayerMask> LayersToSense;
     //The crosshair of the sensor, to be set in Unity editor.
     [SerializeField]
     private SpriteRenderer Cross;
@@ -47,8 +49,13 @@ public class Sensor : MonoBehaviour
         Vector2 direction = Cross.transform.position - this.transform.position;
         direction.Normalize();
 
+        int layers = 0;
+        foreach (var layer in LayersToSense)
+        {
+            layers = layer & layer.value;
+        }
         //Send raycast into direction of sensor
-        RaycastHit2D hit =  Physics2D.Raycast(this.transform.position, direction, MAX_DIST, LayerToSense);
+        RaycastHit2D hit =  Physics2D.Raycast(this.transform.position, direction, MAX_DIST, LayersToSense[0]);
 
         //Check distance
         if (hit.collider == null)

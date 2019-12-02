@@ -2,6 +2,8 @@
 /// Date: March 2017
 
 #region Includes
+
+using System;
 using UnityEngine;
 using System.Collections;
 #endregion
@@ -159,10 +161,15 @@ public class CarMovement : MonoBehaviour
             }
         }
     }
-
+    
     // Unity method, triggered when collision was detected.
-    void OnCollisionEnter2D()
+    void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!collision.gameObject.CompareTag(tag))
+        {
+            controller.Die();
+        }
+        
         if (HitWall != null)
             HitWall();
     }

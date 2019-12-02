@@ -2,6 +2,8 @@
 /// Date: March 2017
 
 #region Includes
+
+using System;
 using UnityEngine;
 #endregion
 
@@ -139,7 +141,7 @@ public class CarController : MonoBehaviour
     }
 
     // Makes this car die (making it unmovable and stops the Agent from calculating the controls for the car).
-    private void Die()
+    public void Die()
     {
         this.enabled = false;
         Movement.Stop();
