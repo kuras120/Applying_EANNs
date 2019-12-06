@@ -138,7 +138,7 @@ public class EvolutionManager : MonoBehaviour
 
         geneticAlgorithm.Start();
     }
-
+    
     // Writes the starting line to the statistics file, stating all genetic algorithm parameters.
     private void WriteStatisticsFileStart()
     {

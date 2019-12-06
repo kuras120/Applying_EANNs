@@ -92,7 +92,7 @@ public class CarController : MonoBehaviour
         Movement.HitWall += Die;
 
         //Set name to be unique
-        this.name = "Car (" + NextID + ")";
+        name = "Car (" + NextID + ")";
     }
     #endregion
 
@@ -143,7 +143,7 @@ public class CarController : MonoBehaviour
     // Makes this car die (making it unmovable and stops the Agent from calculating the controls for the car).
     public void Die()
     {
-        this.enabled = false;
+        enabled = false;
         Movement.Stop();
         Movement.enabled = false;
 

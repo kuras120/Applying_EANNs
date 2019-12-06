@@ -156,12 +156,12 @@ public class GeneticAlgorithm
     /// <summary>
     /// Event for when the algorithm is eventually terminated.
     /// </summary>
-    public event System.Action<GeneticAlgorithm> AlgorithmTerminated;
+    public event Action<GeneticAlgorithm> AlgorithmTerminated;
     /// <summary>
     /// Event for when the algorithm has finished fitness calculation. Given parameter is the
     /// current population sorted by fitness if sorting is enabled (see <see cref="SortPopulation"/>).
     /// </summary>
-    public event System.Action<IEnumerable<Genotype>> FitnessCalculationFinished;
+    public event Action<IEnumerable<Genotype>> FitnessCalculationFinished;
 
     #endregion
 
@@ -179,7 +179,7 @@ public class GeneticAlgorithm
     /// </remarks>
     public GeneticAlgorithm(uint genotypeParamCount, uint populationSize)
     {
-        this.PopulationSize = populationSize;
+        PopulationSize = populationSize;
         //Initialise empty population
         currentPopulation = new List<Genotype>((int) populationSize);
         for (int i = 0; i < populationSize; i++)

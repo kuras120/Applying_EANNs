@@ -289,11 +289,9 @@ public class TrackManager : MonoBehaviour
             car.CheckpointCaptured(); //Inform car that it captured a checkpoint
             return GetCompletePerc(car, ref curCheckpointIndex, index); //Recursively check next checkpoint
         }
-        else
-        {
-            //Return accumulated reward of last checkpoint + reward of distance to next checkpoint
-            return CarCollections[index].Checkpoints[curCheckpointIndex - 1].AccumulatedReward + CarCollections[index].Checkpoints[curCheckpointIndex].GetRewardValue(checkPointDistance);
-        }
+
+        //Return accumulated reward of last checkpoint + reward of distance to next checkpoint
+        return CarCollections[index].Checkpoints[curCheckpointIndex - 1].AccumulatedReward + CarCollections[index].Checkpoints[curCheckpointIndex].GetRewardValue(checkPointDistance);
     }
     #endregion
 

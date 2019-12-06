@@ -46,25 +46,30 @@ public class Sensor : MonoBehaviour
     void FixedUpdate ()
     {
         //Calculate direction of sensor
-        Vector2 direction = Cross.transform.position - this.transform.position;
+        Vector2 direction = Cross.transform.position - transform.position;
         direction.Normalize();
 
-        int layers = 0;
+        RaycastHit2D closestHit = new RaycastHit2D();
+        closestHit.distance = MAX_DIST;
         foreach (var layer in LayersToSense)
         {
-            layers = layer & layer.value;
+            //Send raycast into direction of sensor
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, MAX_DIST, layer);
+            
+            //Check distance
+            if (hit.collider == null)
+                hit.distance = MAX_DIST;
+            else if (hit.distance < MIN_DIST)
+                hit.distance = MIN_DIST;
+
+            if (hit.distance < closestHit.distance)
+            {
+                closestHit = hit;
+            }
         }
-        //Send raycast into direction of sensor
-        RaycastHit2D hit =  Physics2D.Raycast(this.transform.position, direction, MAX_DIST, LayersToSense[0]);
 
-        //Check distance
-        if (hit.collider == null)
-            hit.distance = MAX_DIST;
-        else if (hit.distance < MIN_DIST)
-            hit.distance = MIN_DIST;
-
-        this.Output = hit.distance; //transform to percent of max distance
-        Cross.transform.position = (Vector2) this.transform.position + direction * hit.distance; //Set position of visual cross to current reading
+        Output = closestHit.distance; //transform to percent of max distance
+        Cross.transform.position = (Vector2) transform.position + direction * closestHit.distance; //Set position of visual cross to current reading
 	}
 
     /// <summary>
