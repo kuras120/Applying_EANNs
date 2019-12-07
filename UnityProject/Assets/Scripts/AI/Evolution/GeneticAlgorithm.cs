@@ -293,10 +293,10 @@ public class GeneticAlgorithm
     public static List<Genotype> DefaultSelectionOperator(List<Genotype> currentPopulation)
     {
         List<Genotype> intermediatePopulation = new List<Genotype>();
-        intermediatePopulation.Add(currentPopulation[0]);
-        intermediatePopulation.Add(currentPopulation[1]);
-        intermediatePopulation.Add(currentPopulation[2]);
-
+        for (int i = 0; i < 5; i++)
+        {
+            intermediatePopulation.Add(currentPopulation[i]);
+        }
         return intermediatePopulation;
     }
 
@@ -309,18 +309,24 @@ public class GeneticAlgorithm
     public static List<Genotype> DefaultRecombinationOperator(List<Genotype> intermediatePopulation, uint newPopulationSize)
     {
         if (intermediatePopulation.Count < 2) throw new ArgumentException("Intermediate population size must be greater than 2 for this operator.");
-
+        
         List<Genotype> newPopulation = new List<Genotype>();
         while (newPopulation.Count < newPopulationSize)
         {
             Genotype offspring1, offspring2;
-            CompleteCrossover(intermediatePopulation[0], intermediatePopulation[1], DefCrossSwapProb, out offspring1, out offspring2);
-
-            newPopulation.Add(offspring1);
-            if (newPopulation.Count < newPopulationSize)
-                newPopulation.Add(offspring2);
+            for (int i = 0; i < intermediatePopulation.Count; i++)
+            {
+                for (int j = 0; j < intermediatePopulation.Count; j++)
+                {
+                    CompleteCrossover(intermediatePopulation[i], intermediatePopulation[j], DefCrossSwapProb,
+                        out offspring1, out offspring2);
+                    newPopulation.Add(offspring1);
+                    if (newPopulation.Count < newPopulationSize)
+                        newPopulation.Add(offspring2);
+                    else return newPopulation;
+                }
+            }
         }
-
         return newPopulation;
     }
 

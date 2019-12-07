@@ -254,11 +254,8 @@ public class EvolutionManager : MonoBehaviour
         {
             if (genotype.Fitness < 1)
                 break;
-            else
-            {
-                for (int i = 0; i < (int) genotype.Fitness; i++)
-                    intermediatePopulation.Add(new Genotype(genotype.GetParameterCopy()));
-            }
+            for (int i = 0; i < (int) genotype.Fitness; i++)
+                intermediatePopulation.Add(new Genotype(genotype.GetParameterCopy()));
         }
 
         //Put remainder portion of genotypes into intermediatePopulation
