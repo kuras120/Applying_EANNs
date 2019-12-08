@@ -1313,7 +1313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &680671883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2346,7 +2346,6 @@ MonoBehaviour:
   NormalCarSprite: {fileID: 21300000, guid: ec0050e47bf2ada46bb168ac65f4434e, type: 3}
   CarCollections:
   - {fileID: 1754691415}
-  - {fileID: 680671883}
 --- !u!1001 &1299158482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3257,11 +3256,6 @@ PrefabInstance:
       propertyPath: LayersToSense.Array.data[1].m_Bits
       value: 512
       objectReference: {fileID: 0}
-    - target: {fileID: 61000013157434712, guid: 2bc08855fbed0534da952dbb81572227,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114000010408307266, guid: 2bc08855fbed0534da952dbb81572227,
         type: 3}
       propertyPath: LayersToSense.Array.size
@@ -3325,6 +3319,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013781598358, guid: 2bc08855fbed0534da952dbb81572227, type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61000013157434712, guid: 2bc08855fbed0534da952dbb81572227,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

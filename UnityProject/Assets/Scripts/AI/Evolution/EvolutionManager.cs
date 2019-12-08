@@ -155,9 +155,10 @@ public class EvolutionManager : MonoBehaviour
     {
         foreach (Genotype genotype in currentPopulation)
         {
-            File.AppendAllText(statisticsFileName + ".txt", geneticAlgorithm.GenerationCount + "\t" + genotype.Evaluation + Environment.NewLine);
-            break; //Only write first
+            File.AppendAllText(statisticsFileName + ".txt", geneticAlgorithm.GenerationCount + "\t" + genotype.Evaluation + "; ");
+            // break; //Only write first
         }
+        File.AppendAllText(statisticsFileName + ".txt", Environment.NewLine);
     }
 
     // Checks the current population and saves genotypes to a file if their evaluation is greater than or equal to 1
