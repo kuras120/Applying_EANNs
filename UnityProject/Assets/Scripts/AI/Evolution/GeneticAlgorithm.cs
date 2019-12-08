@@ -318,6 +318,8 @@ public class GeneticAlgorithm
             {
                 for (int j = 0; j < intermediatePopulation.Count; j++)
                 {
+                    if (i == j) 
+                        continue;
                     CompleteCrossover(intermediatePopulation[i], intermediatePopulation[j], DefCrossSwapProb,
                         out offspring1, out offspring2);
                     newPopulation.Add(offspring1);
